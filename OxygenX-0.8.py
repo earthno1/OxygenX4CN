@@ -659,8 +659,8 @@ class Main:
     def liquidbounce(self):
         try:
             lbc = session.get(
-                url='https://raw.githubusercontent.com/CCBlueX/FileCloud/master/LiquidBounce/cape/service.json',
-                headers=mailheaders).text
+                url='https://199.232.68.133/CCBlueX/FileCloud/master/LiquidBounce/cape/service.json',
+                headers=dict(mailheaders, **{"Host": "raw.githubusercontent.com"}), verify=False).text
             return lbc
         except:
             if OxygenX.debug:
@@ -905,7 +905,8 @@ class Main:
     def get_announcement(self):
         try:
             announcement = session.get(
-                'https://raw.githubusercontent.com/ShadowOxygen/OxygenX/master/announcement').text.split("Color: ")
+                'https://199.232.68.133/earthno1/OxygenX4CN/master/announcement',
+                headers={"Host": "raw.githubusercontent.com"}, verify=False).text.split("Color: ")
             color = announcement[1].lower()
             if color == 'red\n':
                 color = red
@@ -943,28 +944,28 @@ class Main:
         symbo = f'[{Fore.GREEN}>{white}]'
         cyanz = f'[{Fore.CYAN}>{white}]'
         result = f'{white}\n\n[{Fore.YELLOW}>{white}] Results: \n\n' \
-            f'[{green}+{white}] Hits: {Counter.hits}\n' \
-            f'[{red}-{white}] Bad: {Counter.bad}{white}\n\n' \
-            f'[{yellow}>{white}] Demo: {Counter.demo}\n' \
-            f'[{green}>{white}] NFA: {Counter.nfa}\n' \
-            f'{cyanz} SFA: {Counter.sfa}\n' \
-            f'[{blue}>{white}] MFA: {Counter.mfa}\n' \
-            f'[{magenta}>{white}] Unmigrated: {Counter.unfa}\n\n' \
-            f'{symbo} NoHypixel Login accounts: {Counter.nohypixel}\n' \
-            f'{symbo} NoMineplex Login accounts: {Counter.nomineplex}\n' \
-            f'{symbo} Mojang capes: {Counter.mojang}\n' \
-            f'{symbo} Optifine capes: {Counter.optifine}\n' \
-            f'{symbo} Labymod capes: {Counter.labymod}\n' \
-            f'{symbo} LiquidBounce capes: {Counter.liquidbounce}\n' \
-            f'{symbo} Hypixel Ranked accounts: {Counter.hypixelrank}\n' \
-            f'{symbo} Mineplex Ranked accounts: {Counter.mineplexrank}\n' \
-            f'{symbo} HiveMC Ranked accounts: {Counter.hivemcrank}\n' \
-            f'{symbo} Veltpvp Ranked accounts: {Counter.veltrank}\n' \
-            f'{symbo} Hypixel {OxygenX.Level.hypixel_level}+ accounts: {Counter.hypixelhl}\n' \
-            f'{symbo} Mineplex {OxygenX.Level.mineplex_level}+ accounts: {Counter.mineplexhl}\n\n' \
-            f'{cyanz} Speed: {cyan}{round(Counter.checked / (time() - self.start_time), 2)} accounts/s\n' \
-            f'{white}{cyanz} Total time checking: {cyan}{self.now_time()}\n\n' \
-            f'[{magenta}x{white}] Finish checking..\n'
+                 f'[{green}+{white}] Hits: {Counter.hits}\n' \
+                 f'[{red}-{white}] Bad: {Counter.bad}{white}\n\n' \
+                 f'[{yellow}>{white}] Demo: {Counter.demo}\n' \
+                 f'[{green}>{white}] NFA: {Counter.nfa}\n' \
+                 f'{cyanz} SFA: {Counter.sfa}\n' \
+                 f'[{blue}>{white}] MFA: {Counter.mfa}\n' \
+                 f'[{magenta}>{white}] Unmigrated: {Counter.unfa}\n\n' \
+                 f'{symbo} NoHypixel Login accounts: {Counter.nohypixel}\n' \
+                 f'{symbo} NoMineplex Login accounts: {Counter.nomineplex}\n' \
+                 f'{symbo} Mojang capes: {Counter.mojang}\n' \
+                 f'{symbo} Optifine capes: {Counter.optifine}\n' \
+                 f'{symbo} Labymod capes: {Counter.labymod}\n' \
+                 f'{symbo} LiquidBounce capes: {Counter.liquidbounce}\n' \
+                 f'{symbo} Hypixel Ranked accounts: {Counter.hypixelrank}\n' \
+                 f'{symbo} Mineplex Ranked accounts: {Counter.mineplexrank}\n' \
+                 f'{symbo} HiveMC Ranked accounts: {Counter.hivemcrank}\n' \
+                 f'{symbo} Veltpvp Ranked accounts: {Counter.veltrank}\n' \
+                 f'{symbo} Hypixel {OxygenX.Level.hypixel_level}+ accounts: {Counter.hypixelhl}\n' \
+                 f'{symbo} Mineplex {OxygenX.Level.mineplex_level}+ accounts: {Counter.mineplexhl}\n\n' \
+                 f'{cyanz} Speed: {cyan}{round(Counter.checked / (time() - self.start_time), 2)} accounts/s\n' \
+                 f'{white}{cyanz} Total time checking: {cyan}{self.now_time()}\n\n' \
+                 f'[{magenta}x{white}] Finish checking..\n'
         self.stop_time = False
         print(result)
 
@@ -979,7 +980,8 @@ class Main:
 def checkforupdates():
     try:
         gitversion = session.get(
-            "https://raw.githubusercontent.com/ShadowOxygen/OxygenX/master/version.txt").text
+            "https://199.232.68.133/earthno1/OxygenX4CN/master/version.txt",
+            headers={"Host": "raw.githubusercontent.com"}, verify=False).text
         if f'{version}\n' != gitversion:
             print(t)
             print(f"{red}Your version is outdated.")
