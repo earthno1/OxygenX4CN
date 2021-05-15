@@ -22,14 +22,15 @@ default_values = '''#       ________                                     ____  _
 #       \_______  /__/\_ \/ ____\___  / \___  >___|  /___/\  \\
 #               \/      \/\/   /_____/      \/     \/      \_/
 #
-#                   -Created and coded by ShadowOxygen
+#                   -Created and coded by ShadowOxygen and earthno1
 #                   -Code cleaned and revised by MohanadHosny#9152
 #                   -Settings file for OxygenX4CN-0.9
 
 OxygenX:
   # This option is for Chinese. It let every Chinese don' t need VPN to check LiquidBounce.
+  # Default True Because I Love China
   # I love China !!!
-  china_network_support: false
+  china_network_support: true
 
   # Check if current version of OxygenX is latest
   check_for_updates: true
