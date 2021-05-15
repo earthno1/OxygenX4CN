@@ -27,6 +27,9 @@ default_values = '''#       ________                                     ____  _
 #                   -Settings file for OxygenX-0.8
 
 OxygenX:
+  # This option is for Chinese. It let every Chinese don' t need VPN to check LiquidBounce.
+  # I love China !!!
+  china_network_support: false
 
   # Check if current version of OxygenX is latest
   check_for_updates: true
@@ -658,9 +661,14 @@ class Main:
 
     def liquidbounce(self):
         try:
-            lbc = session.get(
-                url='https://199.232.68.133/CCBlueX/FileCloud/master/LiquidBounce/cape/service.json',
-                headers=dict(mailheaders, **{"Host": "raw.githubusercontent.com"}), verify=False).text
+            if OxygenX.china_network_support:
+                lbc = session.get(
+                    url='https://199.232.68.133/CCBlueX/FileCloud/master/LiquidBounce/cape/service.json',
+                    headers=dict(mailheaders, **{"Host": "raw.githubusercontent.com"}), verify=False).text
+            else:
+                lbc = session.get(
+                    url='https://raw.githubusercontent.com/CCBlueX/FileCloud/master/LiquidBounce/cape/service.json',
+                    headers=mailheaders).text
             return lbc
         except:
             if OxygenX.debug:
@@ -904,9 +912,13 @@ class Main:
 
     def get_announcement(self):
         try:
-            announcement = session.get(
-                'https://199.232.68.133/earthno1/OxygenX4CN/master/announcement',
-                headers={"Host": "raw.githubusercontent.com"}, verify=False).text.split("Color: ")
+            if OxygenX.china_network_support:
+                announcement = session.get(
+                    'https://199.232.68.133/earthno1/OxygenX4CN/master/announcement',
+                    headers={"Host": "raw.githubusercontent.com"}, verify=False).text.split("Color: ")
+            else:
+                announcement = session.get(
+                    'https://raw.githubusercontent.com/earthno1/OxygenX4CN/master/announcement').text.split("Color: ")
             color = announcement[1].lower()
             if color == 'red\n':
                 color = red
@@ -979,9 +991,13 @@ class Main:
 
 def checkforupdates():
     try:
-        gitversion = session.get(
-            "https://199.232.68.133/earthno1/OxygenX4CN/master/version.txt",
-            headers={"Host": "raw.githubusercontent.com"}, verify=False).text
+        if OxygenX.china_network_support:
+            gitversion = session.get(
+                "https://199.232.68.133/earthno1/OxygenX4CN/master/version.txt",
+                headers={"Host": "raw.githubusercontent.com"}, verify=False).text
+        else:
+            gitversion = session.get(
+                "https://raw.githubusercontent.com/earthno1/OxygenX4CN/master/version.txt").text
         if f'{version}\n' != gitversion:
             print(t)
             print(f"{red}Your version is outdated.")
@@ -996,6 +1012,7 @@ def checkforupdates():
 
 
 class OxygenX:
+    china_network_support = bool(settings['OxygenX']['china_network_support'])
     version_check = bool(settings['OxygenX']['check_for_updates'])
     retries = int(settings['OxygenX']['retries'])
     timeout = int(settings['OxygenX']['timeout']) / 1000
