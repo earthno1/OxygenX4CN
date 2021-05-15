@@ -22,7 +22,7 @@ default_values = '''#       ________                                     ____  _
 #       \_______  /__/\_ \/ ____\___  / \___  >___|  /___/\  \\
 #               \/      \/\/   /_____/      \/     \/      \_/
 #
-#                   -Created and coded by ShadowOxygen and earthno1
+#                   -Created and coded by earthno1
 #                   -Code cleaned and revised by MohanadHosny#9152
 #                   -Settings file for OxygenX4CN-0.9
 
@@ -946,12 +946,12 @@ class Main:
             OxygenX.threads = int(len(self.accounts))
         self.get_announcement()
         mainpool = ThreadPool(processes=OxygenX.threads)
+        Thread(target=self.title).start()
+        mainpool.imap_unordered(func=self.prep, iterable=self.accounts)
         clear()
         print(t)
         print(self.announcement)
         self.start_time = time()
-        Thread(target=self.title).start()
-        mainpool.imap_unordered(func=self.prep, iterable=self.accounts)
         mainpool.close()
         mainpool.join()
         symbo = f'[{Fore.GREEN}>{white}]'
@@ -1085,7 +1085,7 @@ if __name__ == '__main__':
     charz = ['@', '!', '#', '$', '%', '^', '&', '*', ')', '(', '-', '}', '{', ']', '"', '+', '=', '?', '/',
              '.', '>', ',', '<', '`', '\'', '~', '[', '\\', ' ']
     version = 'CN0.9'
-    set_title(f'OxygenX-{version} | by ShadowOxygen')
+    set_title(f'OxygenX-{version} | by earthno1')
     t = f'''{cyan}________                                     ____  ___
 \_____  \ ___  ______.__. ____   ____   ____ \   \/  /
  /   |   \\\  \/  <   |  |/ ___\_/ __ \ /    \ \     /
