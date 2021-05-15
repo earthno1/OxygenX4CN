@@ -1003,7 +1003,7 @@ def checkforupdates():
             print(f"{red}Your version is outdated.")
             print(f"Your version: {version}\n")
             print(f'Latest version: {gitversion}Get latest version in the link below')
-            print(f"https://github.com/ShadowOxygen/OxygenX/releases\nStarting in 5 seconds...{cyan}")
+            print(f"https://github.com/earthno1/OxygenX4CN\nStarting in 5 seconds...{cyan}")
             sleep(5)
             clear()
     except:
