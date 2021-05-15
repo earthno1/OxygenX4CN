@@ -24,7 +24,7 @@ default_values = '''#       ________                                     ____  _
 #
 #                   -Created and coded by ShadowOxygen
 #                   -Code cleaned and revised by MohanadHosny#9152
-#                   -Settings file for OxygenX-0.8
+#                   -Settings file for OxygenX4CN-0.9
 
 OxygenX:
   # This option is for Chinese. It let every Chinese don' t need VPN to check LiquidBounce.
@@ -1083,7 +1083,7 @@ if __name__ == '__main__':
     sfa_url = 'https://api.mojang.com/user/security/challenges'
     charz = ['@', '!', '#', '$', '%', '^', '&', '*', ')', '(', '-', '}', '{', ']', '"', '+', '=', '?', '/',
              '.', '>', ',', '<', '`', '\'', '~', '[', '\\', ' ']
-    version = '0.8'
+    version = 'CN0.9'
     set_title(f'OxygenX-{version} | by ShadowOxygen')
     t = f'''{cyan}________                                     ____  ___
 \_____  \ ___  ______.__. ____   ____   ____ \   \/  /
