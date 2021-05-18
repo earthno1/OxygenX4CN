@@ -599,6 +599,7 @@ class Main:
                     f'{"" if Counter.unfa == 0 else f" - Unmigrated: {Counter.unfa}"}'
                     f'{"" if Counter.demo == 0 else f" - Demo: {Counter.demo}"}'
                     f"{'' if Counter.mfa == 0 else f' - MFA: {Counter.mfa}'}"
+                    f"{'' if len(Counter.bad_retries) == 0 else f' | Retries: {len(Counter.bad_retries)}'}"
                     f"{'' if Counter.error == 0 else f' | Errors: {Counter.error}'}"
                     f" | Left: {len(self.accounts) - Counter.checked}/{len(self.accounts)}"
                     f'{"" if not OxygenX.Proxy.proxy else f" - Proxies: {len(self.proxylist)}"}'
@@ -611,6 +612,7 @@ class Main:
                     f" - Bad: {Counter.bad}"
                     f'{"" if Counter.legacy_name == 0 else f" - Legacy Lines: {Counter.legacy_name}"}'
                     f'{"" if Counter.unfa == 0 else f" - Unmigrated: {Counter.unfa}"}'
+                    f"{'' if len(Counter.bad_retries) == 0 else f' | Retries: {len(Counter.bad_retries)}'}"
                     f"{'' if Counter.error == 0 else f' | Errors: {Counter.error}'}"
                     f" | Left: {len(self.accounts) - Counter.checked}/{len(self.accounts)}"
                     f'{"" if not OxygenX.Proxy.proxy else f" - Proxies: {len(self.proxylist)}"}'
