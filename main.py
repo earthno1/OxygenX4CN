@@ -14,8 +14,8 @@ from console.utils import set_title
 from easygui import fileopenbox
 from requests import Session, exceptions
 from yaml import safe_load
-
-default_values = '''#       ________                                     ____  ___
+version = 'CN1.0'
+default_values = f'''#       ________                                     ____  ___
 #       \_____  \ ___  ______.__. ____   ____   ____ \   \/  /
 #        /   |   \\\  \/  <   |  |/ ___\_/ __ \ /    \ \     /
 #       /    |    \>    < \___  / /_/  >  ___/|   |  \/     \\
@@ -24,7 +24,7 @@ default_values = '''#       ________                                     ____  _
 #
 #                   -Created and coded by earthno1
 #                   -Code cleaned and revised by MohanadHosny#9152
-#                   -Settings file for OxygenX4CN-0.9
+#                   -Settings file for OxygenX4CN-{version}
 
 OxygenX:
   # This option is for Chinese. It let every Chinese don' t need VPN to check LiquidBounce.
@@ -1098,7 +1098,7 @@ if __name__ == '__main__':
     sfa_url = 'https://api.mojang.com/user/security/challenges'
     charz = ['@', '!', '#', '$', '%', '^', '&', '*', ')', '(', '-', '}', '{', ']', '"', '+', '=', '?', '/',
              '.', '>', ',', '<', '`', '\'', '~', '[', '\\', ' ']
-    version = 'CN0.9'
+    # version = 'CN1.0'
     set_title(f'OxygenX-{version} | by earthno1')
     t = f'''{cyan}________                                     ____  ___
 \_____  \ ___  ______.__. ____   ____   ____ \   \/  /
