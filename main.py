@@ -151,6 +151,7 @@ class Counter:
     checked = 0
     cpm = 0
     legacy_name = 0
+    bad_retries = []
 
 
 class Main:
@@ -204,13 +205,18 @@ class Main:
                             return
                         reply = self.checkname(email)
                         if not reply:
-                            Counter.checked += 1
-                            Counter.bad += 1
-                            if OxygenX.print_bad:
-                                self.prints(f'{red}[Bad] {blue}- {red}{line}')
-                            if OxygenX.save_bad:
-                                self.writing([line, 'Bad'])
-                            return
+                            if OxygenX.retries > 1 and Counter.bad_retries.count(hash(line)) < OxygenX.retries:
+                                Counter.bad_retries.append(hash(line))
+                                self.prints(f'{yellow}[Retry] {blue}- {yellow}{line}')
+                                return self.prep(line)
+                            else:
+                                Counter.checked += 1
+                                Counter.bad += 1
+                                if OxygenX.print_bad:
+                                    self.prints(f'{red}[Bad] {blue}- {red}{line}')
+                                if OxygenX.save_bad:
+                                    self.writing([line, 'Bad'])
+                                return
                         else:
                             Counter.legacy_name += 1
                     else:
@@ -218,12 +224,18 @@ class Main:
                 answer = self.checkmc(user=email, passw=password)
                 Counter.checked += 1
                 if 'Invalid credentials' in answer:
-                    Counter.bad += 1
-                    if OxygenX.print_bad:
-                        self.prints(f'{red}[Bad] {blue}- {red}{line}')
-                    if OxygenX.save_bad:
-                        self.writing([line, 'Bad'])
-                    return
+                    if OxygenX.retries > 1 and Counter.bad_retries.count(hash(line)) < OxygenX.retries:
+                        Counter.bad_retries.append(hash(line))
+                        self.prints(f'{yellow}[Retry] {blue}- {yellow}{line}')
+                        return self.prep(line)
+                    else:
+
+                        Counter.bad += 1
+                        if OxygenX.print_bad:
+                            self.prints(f'{red}[Bad] {blue}- {red}{line}')
+                        if OxygenX.save_bad:
+                            self.writing([line, 'Bad'])
+                        return
                 texta = answer.text
                 if '[]' in texta:
                     self.prints(f'{yellow}[Demo] {blue}- {yellow}{line}')
