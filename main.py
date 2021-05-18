@@ -53,7 +53,7 @@ OxygenX:
   
   # Check hits if its a mail access
   mail_access: true
-  
+
   # Save ranked accounts in NFA.txt or SFA.txt (Turn it off for ranked accounts NOT to save in NFA.txt or SFA.txt)
   save_ranked_type: true
   
@@ -85,7 +85,7 @@ OxygenX:
     # Save High leveled accounts in files.
     hypixel: true
     mineplex: true
-    
+
     # Minimum high level accounts
     hypixel_level: 25
     mineplex_level: 25
@@ -108,7 +108,7 @@ OxygenX:
     proxy_for_sfa: false
     # Sleep between checks if proxy mode is false (put 0 for no sleep) counted in secouds
     sleep_proxyless: 30
-    
+
     api:
       # If proxy api link to be used.
       use: false
