@@ -14,6 +14,7 @@ from console.utils import set_title
 from easygui import fileopenbox
 from requests import Session, exceptions
 from yaml import safe_load
+
 version = 'CN1.0'
 default_values = f'''#       ________                                     ____  ___
 #       \_____  \ ___  ______.__. ____   ____   ____ \   \/  /
